@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>幸运大转盘</title>
+  <link rel="shortcut icon" href="../../dist/img/favicon.ico" />
+  <script>
+    (function () {
+      function flexAble() {
+        var deviceWidth = document.documentElement.clientWidth;
+        if (deviceWidth > 750) deviceWidth = 750;
+        document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+      }
+      flexAble();
+      var timer;
+      window.onresize = function () {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          flexAble();
+        }, 0)
+      };
+    })();
+  </script>
+  <link rel="stylesheet" href="../../dist/css/big-wheel/style.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+  <script>window.Vue || document.write('<script src="../../dist/lib/vue.min.js" type="text/javascript"><\/script>')</script>
+</head>
+<body>
+  <div id="app">
+    <div class="wheel-wrap">
+      <!-- 彩灯 -->
+      <div class="illumination-wrap">
+        <div v-for="(n, index) in lightNum" :class="['illumination', index%2 === 0 ? 'illumination-even' : 'illumination-ddd']" :key="n" :style="{transform: 'rotate(' + index/lightNum + 'turn) translateY(-2.46rem)','-webket-transform': 'rotate(' + index/lightNum.length + 'turn) translateY(-2.46rem)'}"></div>
+      </div>
+      <div class="wheel">
+        <div class="wheel-inside" :style="animationData">
+          <!-- 扇形 -->
+          <!-- 先转半个自身角度，然后在反转自身角度和90度之间的差值。如果是奇数，则多转 半个自身角度-->
+          <div class="sector-wrap" :style="{transform: 'rotate(' + (3/(2*prizeList.length) - (prizeList.length%2 === 0 ? 0 : 1/(2*prizeList.length)) - 0.25) + 'turn)', '-webkit-transform': 'rotate(' + (3/(2*prizeList.length) - (prizeList.length%2 === 0 ? 0 : 1/(2*prizeList.length)) - 0.25) + 'turn)'}">
+            <div :class="['sector', index%2 === 0 ? 'sector-even' : 'sector-ddd']" v-for="(item, index) in prizeList" :key="index" :style="{transform: 'rotate(' + (index/prizeList.length) + 'turn) skew(' + (90 - 360/prizeList.length) + 'deg)', '-webkit-transform': 'rotate(' + (index/prizeList.length) + 'turn) skew(' + (90 - 360/prizeList.length) + 'deg)'}"></div>
+          </div>
+
+          <!-- 分割线 -->
+          <div class="split-line-wrap" :style="{transform: 'rotate(' + (1/(2*prizeList.length)) + 'turn)', '-webket-transform': 'rotate(' + (1/(2*prizeList.length)) + 'turn)'}">
+            <div v-for="(item, index) in prizeList" class="split-line" :style="{transform: 'rotate(' + (index/prizeList.length) + 'turn) translate(-50%, 0)', }"></div>
+          </div>
+
+          <!-- 奖品 -->
+          <div class="gift-wrap">
+            <div class="gift" v-for="(item, index) in prizeList" :key="index" :style="{transform: 'rotate(' + index/prizeList.length + 'turn)'}">
+              <div class="gift-name">{{ item.name }}</div>
+              <img class="gift-thumb" :src="item.thumb" />
+            </div>
+          </div>
+        </div>
+        <!-- 按钮 -->
+        <div class="wheel-btn" @click="handleClickLottery">
+          <span class="wheel-btn-inside">点击<br>抽奖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../../dist/js/big-wheel/script.min.js"></script>
+</body>
+</html>

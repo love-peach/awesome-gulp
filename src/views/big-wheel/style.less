@@ -1,0 +1,185 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 16px;
+}
+
+/* 转盘样式 */
+
+.wheel-wrap {
+  position: relative;
+  font-size: 0;
+  display: inline-block;
+  padding: .3rem;
+  background-color: #eb2c3a;
+  border-radius: 100%;
+}
+.wheel {
+  display: inline-block;
+  padding: .06rem;
+  background-color: #f3df95;
+  border-radius: 100%;
+}
+.wheel-inside {
+  position: relative;
+  border: .1rem solid #fd7522;
+  height: 4.30rem;
+  width: 4.3rem;
+  border-radius: 100%;
+  transition: transform 5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 彩灯 */
+.illumination-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.illumination {
+  box-sizing: border-box;
+  display: block;
+  width: .16rem;
+  height: .16rem;
+  background: #fefa75;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -.08rem 0 0 -.08rem;
+  border-radius: .08rem;
+  /* 闪光动画 */
+  animation: twinkling 1.2s infinite ease-in-out;
+}
+
+@keyframes twinkling{
+  0%{
+      background: yellow;
+  }   
+  25%{
+      background: #fff;
+  }
+  75%{
+      background: blue;
+  }
+  100%{
+      background: green;
+  }
+}
+
+/* 扇形 */
+.sector-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.sector {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  transform-origin: 100% 100%;
+}
+.sector-even {
+  background-color: #FF9C11;
+}
+.sector-ddd {
+  background-color: #F4E090;
+}
+
+/* 分割线 */
+.split-line-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.split-line {
+  position:absolute;
+  left: 50%;
+  height: 50%;
+  width: 1px;
+  // margin-left: -1px;
+  background-color: #fff;
+  transform-origin: 0 100%;
+
+}
+
+/* 奖品 */
+.gift-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.gift {
+  box-sizing: border-box;
+  padding-top: .1rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  text-align: center;
+}
+.gift-name {
+  font-size: .24rem;
+  color: #fff;
+  margin-bottom: .05rem;
+}
+.gift-thumb {
+  height: .4rem;
+  width: .4rem;
+}
+
+/* 按钮 */
+
+.wheel-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: .1rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: .15rem solid #F5A318;
+}
+.wheel-btn:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -.3rem;
+  height:0;
+  margin-left: -.13rem;
+  width:0;
+  overflow: hidden;
+  font-size: 0; 
+  line-height: 0;
+  /* border-color: #fdb22f transparent transparent transparent; */
+  border-color: transparent transparent #fff transparent;
+  /* border-color: #FF9600 #3366ff #12ad2a #f0ed7a; */
+  border-style: solid;
+  border-width: 0 .15rem .4rem .15rem;
+}
+.wheel-btn-inside {
+  display: block;
+  height: 1.3rem;
+  width: 1.30rem;
+  box-sizing: border-box;
+  padding-top: .24rem;
+  text-align: center;
+  color: yellow;
+  font-size: .38rem;
+  font-weight: bold;
+  line-height: 1;
+  background-color: #ED1925;
+  border-radius: 50%;
+}

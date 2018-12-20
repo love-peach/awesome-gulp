@@ -1,0 +1,41 @@
+{
+  "name": "awesome-gulp",
+  "version": "1.0.0",
+  "description": "一个关于使用gulp 构建前端工作流的静态网站",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build"
+  },
+  "keywords": [
+    "gulp",
+    "gulp4.0",
+    "template"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cheerio": "^0.6.3",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-less": "^4.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1",
+    "http-proxy-middleware": "^0.19.1",
+    "imagemin-pngquant": "^6.0.0"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "rimraf": "^2.6.2"
+  }
+}
